@@ -677,14 +677,5 @@
       }
     }
   ],
-  "chat_Thowsif": [
-    {
-      "role": "user",
-      "content": "hi"
-    },
-    {
-      "role": "assistant",
-      "content": "Hello. I'm excited to chat with you about football. What would you like to know or discuss? Are you looking for tips on improving your game, exploring different formations, or perhaps analyzing a specific team's tactics? I'm here to help. Some potential topics we could cover include:\n* Training drills to enhance your skills\n* Strategies for outmaneuvering opponents\n* Player development and positioning\n* Game-day preparation and mindset\nLet me know what's on your mind, and I'll do my best to provide guidance and advice."
-    }
-  ]
+  "chat_Thowsif": []
 }
