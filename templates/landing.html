@@ -1,0 +1,356 @@
+{% extends "base.html" %}
+{% block title %}TactIQ AI - Home{% endblock %}
+{% block body %}
+<div class="app-wrapper">
+  <!-- Navbar -->
+  <nav class="navbar-top">
+    <div class="container-fluid px-4 d-flex align-items-center justify-content-between">
+      <div class="brand-logo"><i class="fas fa-futbol text-cyan me-2"></i><span class="fw-bold text-white">TactIQ <span class="text-cyan">AI</span></span></div>
+      <div class="d-flex align-items-center gap-2">
+        <div class="user-badge"><i class="fas fa-user-circle me-1"></i>{{ user }}</div>
+        <button class="btn btn-sm btn-outline-danger" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="landing-wrapper">
+    <!-- Canvas bg -->
+    <canvas id="landingParticles" class="particles-bg"></canvas>
+
+    <div class="container text-center landing-content">
+      <!-- Header -->
+      <div class="landing-header mb-5">
+        <div class="welcome-badge mb-3">
+          <i class="fas fa-hand-wave me-2"></i>Welcome back, <strong>{{ user }}</strong>!
+        </div>
+        <h1 class="landing-title mb-2">
+          What would you like to <span class="text-cyan">do today?</span>
+        </h1>
+        <p style="color:#94a3b8;font-size:1rem;">Choose one of the options below to get started</p>
+      </div>
+
+      <!-- 3 Cards -->
+      <div class="row g-4 justify-content-center">
+
+        <!-- AI Coach -->
+        <div class="col-12 col-md-4">
+          <a href="/chat" class="landing-card-link">
+            <div class="landing-card card-coach">
+              <div class="lc-glow"></div>
+              <div class="lc-icon-wrap">
+                <div class="lc-icon" style="background:linear-gradient(135deg,#00d4ff,#0099cc)">
+                  <i class="fas fa-robot"></i>
+                </div>
+              </div>
+              <h3 class="lc-title">AI Football Coach</h3>
+              <p class="lc-desc">Ask anything about football — tactics, formations, training schedules, rules and more!</p>
+              <div class="lc-tags">
+                <span>⚽ Tactics</span>
+                <span>🏃 Training</span>
+                <span>📋 Rules</span>
+              </div>
+              <div class="lc-btn" style="color:var(--cyan)">
+                Start Chatting <i class="fas fa-arrow-right ms-1"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Match Tracker -->
+        <div class="col-12 col-md-4">
+          <div class="landing-card-link" onclick="openTracker()" style="cursor:pointer">
+            <div class="landing-card card-tracker">
+              <div class="lc-glow"></div>
+              <div class="lc-icon-wrap">
+                <div class="lc-icon" style="background:linear-gradient(135deg,#7c3aed,#5b21b6)">
+                  <i class="fas fa-stopwatch"></i>
+                </div>
+              </div>
+              <h3 class="lc-title">Live Match Tracker</h3>
+              <p class="lc-desc">Track live match events in real-time — possession, shots, goals and auto-transfer stats!</p>
+              <div class="lc-tags">
+                <span>⏱️ Live Timer</span>
+                <span>📊 Stats</span>
+                <span>🔄 Auto-transfer</span>
+              </div>
+              <div class="lc-btn" style="color:#a78bfa">
+                Open Tracker <i class="fas fa-arrow-right ms-1"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side Selection -->
+        <div class="col-12 col-md-4">
+          <a href="/match-select" class="landing-card-link">
+            <div class="landing-card card-select">
+              <div class="lc-glow"></div>
+              <div class="lc-icon-wrap">
+                <div class="lc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)">
+                  <i class="fas fa-futbol"></i>
+                </div>
+              </div>
+              <h3 class="lc-title">Tactical Analysis</h3>
+              <p class="lc-desc">Select match format and get AI-powered tactical recommendations instantly!</p>
+              <div class="lc-tags">
+                <span>🔟 11-a-Side</span>
+                <span>7️⃣ 7-a-Side</span>
+                <span>5️⃣ 5-a-Side</span>
+              </div>
+              <div class="lc-btn" style="color:#f59e0b">
+                Analyze Match <i class="fas fa-arrow-right ms-1"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Quick Stats Row -->
+      <div class="landing-stats mt-5">
+        <div class="lst-item">
+          <div class="lst-icon"><i class="fas fa-brain"></i></div>
+          <div class="lst-text">Random Forest ML</div>
+        </div>
+        <div class="lst-divider"></div>
+        <div class="lst-item">
+          <div class="lst-icon"><i class="fas fa-database"></i></div>
+          <div class="lst-text">700+ Training Samples</div>
+        </div>
+        <div class="lst-divider"></div>
+        <div class="lst-item">
+          <div class="lst-icon"><i class="fas fa-bolt"></i></div>
+          <div class="lst-text">Real-time Analysis</div>
+        </div>
+        <div class="lst-divider"></div>
+        <div class="lst-item">
+          <div class="lst-icon"><i class="fas fa-shield-alt"></i></div>
+          <div class="lst-text">Secure Login</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Match Tracker Modal -->
+<div class="modal fade" id="trackerModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content dark-modal">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title text-white"><i class="fas fa-stopwatch text-cyan me-2"></i>Live Match Tracker</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-0">
+        <div id="trackerContent"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.landing-wrapper {
+  min-height: calc(100vh - 60px);
+  background: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1rem;
+}
+
+.landing-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.landing-header { }
+
+.welcome-badge {
+  display: inline-block;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid var(--border);
+  color: var(--cyan);
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+}
+
+.landing-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: white;
+}
+
+/* Cards */
+.landing-card-link { text-decoration: none; display: block; }
+
+.landing-card {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 1.5rem;
+  padding: 2rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  height: 100%;
+  text-align: left;
+}
+
+.landing-card:hover { transform: translateY(-8px); }
+
+.card-coach:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 20px 60px rgba(0,212,255,0.2);
+}
+.card-tracker:hover {
+  border-color: var(--purple);
+  box-shadow: 0 20px 60px rgba(124,58,237,0.2);
+}
+.card-select:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 20px 60px rgba(245,158,11,0.2);
+}
+
+.lc-glow {
+  position: absolute;
+  top: -30%;
+  right: -30%;
+  width: 150%;
+  height: 150%;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.card-coach .lc-glow { background: radial-gradient(circle, rgba(0,212,255,0.08), transparent 60%); }
+.card-tracker .lc-glow { background: radial-gradient(circle, rgba(124,58,237,0.08), transparent 60%); }
+.card-select .lc-glow { background: radial-gradient(circle, rgba(245,158,11,0.08), transparent 60%); }
+.landing-card:hover .lc-glow { opacity: 1; }
+
+.lc-icon-wrap { margin-bottom: 1.25rem; }
+.lc-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.lc-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 0.75rem;
+}
+
+.lc-desc {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.lc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+.lc-tags span {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.lc-btn {
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+/* Stats Row */
+.landing-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.25rem 2rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 1rem;
+  max-width: 700px;
+  margin: 2rem auto 0;
+}
+.lst-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+.lst-icon { color: var(--cyan); font-size: 0.9rem; }
+.lst-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255,255,255,0.1);
+}
+
+@media(max-width: 768px) {
+  .lst-divider { display: none; }
+  .landing-stats { gap: 0.75rem; }
+}
+</style>
+
+<script>
+async function doLogout() {
+  await fetch('/api/logout', {method:'POST'});
+  window.location.href='/';
+}
+
+function openTracker() {
+  document.getElementById('trackerContent').innerHTML = getTrackerHTML();
+  const modal = new bootstrap.Modal(document.getElementById('trackerModal'));
+  modal.show();
+  initTracker();
+}
+
+// Particle animation
+const canvas = document.getElementById('landingParticles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const particles = Array.from({length:50}, ()=>({
+  x: Math.random()*canvas.width,
+  y: Math.random()*canvas.height,
+  vx: (Math.random()-0.5)*0.4,
+  vy: (Math.random()-0.5)*0.4,
+  r: Math.random()*2+1,
+  a: Math.random()
+}));
+function animParticles() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0||p.x>canvas.width) p.vx*=-1;
+    if(p.y<0||p.y>canvas.height) p.vy*=-1;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(0,212,255,${p.a*0.3})`; ctx.fill();
+  });
+  requestAnimationFrame(animParticles);
+}
+animParticles();
+window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+</script>
+<script src="{{ url_for('static', filename='js/tracker.js') }}"></script>
+{% endblock %}

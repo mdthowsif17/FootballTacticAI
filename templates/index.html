@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% block title %}TactIQ AI - Football Tactical Intelligence{% endblock %}
+{% block body %}
+<!-- Particle Canvas -->
+<canvas id="particles" class="particles-bg"></canvas>
+
+<!-- Login/Register Modal -->
+<div class="modal fade" id="authModal" tabindex="-1" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content auth-modal">
+      <div class="modal-body p-4">
+        <div class="text-center mb-4">
+          <div class="brand-icon mb-3"><i class="fas fa-futbol fa-2x"></i></div>
+          <h4 class="text-white fw-bold">TactIQ AI</h4>
+        </div>
+        <!-- Tabs -->
+        <ul class="nav nav-pills auth-tabs mb-4" id="authTabs">
+          <li class="nav-item flex-fill"><a class="nav-link active text-center" data-tab="login" href="#">Login</a></li>
+          <li class="nav-item flex-fill"><a class="nav-link text-center" data-tab="register" href="#">Register</a></li>
+        </ul>
+        <!-- Login Form -->
+        <div id="loginForm">
+          <div class="mb-3"><input type="text" id="loginUser" class="form-control dark-input" placeholder="Username"></div>
+          <div class="mb-3"><input type="password" id="loginPass" class="form-control dark-input" placeholder="Password"></div>
+          <div id="loginErr" class="text-danger small mb-2"></div>
+          <button class="btn btn-cyan w-100" onclick="doLogin()"><i class="fas fa-sign-in-alt me-2"></i>Login</button>
+        </div>
+        <!-- Register Form -->
+        <div id="registerForm" style="display:none">
+          <div class="mb-3"><input type="text" id="regUser" class="form-control dark-input" placeholder="Username"></div>
+          <div class="mb-3"><input type="password" id="regPass" class="form-control dark-input" placeholder="Password (min 6 chars)"></div>
+          <div class="mb-3"><input type="password" id="regPass2" class="form-control dark-input" placeholder="Confirm Password"></div>
+          <div id="regErr" class="text-danger small mb-2"></div>
+          <button class="btn btn-purple w-100" onclick="doRegister()"><i class="fas fa-user-plus me-2"></i>Create Account</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<div class="hero-wrapper">
+  <div class="hero-overlay"></div>
+  <!-- Pitch lines SVG bg -->
+  <svg class="pitch-svg" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+    <rect width="800" height="500" fill="none" stroke="rgba(0,212,255,0.08)" stroke-width="2" rx="10"/>
+    <line x1="400" y1="0" x2="400" y2="500" stroke="rgba(0,212,255,0.08)" stroke-width="1.5"/>
+    <circle cx="400" cy="250" r="80" fill="none" stroke="rgba(0,212,255,0.08)" stroke-width="1.5"/>
+    <rect x="60" y="170" width="120" height="160" fill="none" stroke="rgba(0,212,255,0.06)" stroke-width="1.5"/>
+    <rect x="620" y="170" width="120" height="160" fill="none" stroke="rgba(0,212,255,0.06)" stroke-width="1.5"/>
+    <rect x="20" y="210" width="40" height="80" fill="none" stroke="rgba(0,212,255,0.06)" stroke-width="1.5"/>
+    <rect x="740" y="210" width="40" height="80" fill="none" stroke="rgba(0,212,255,0.06)" stroke-width="1.5"/>
+  </svg>
+
+  <div class="hero-content container text-center">
+    <div class="hero-badge mb-3">
+      <span><i class="fas fa-brain me-2"></i>AI-Powered Tactical Intelligence</span>
+    </div>
+    <div class="hero-logo mb-3">
+      <i class="fas fa-futbol fa-spin-slow text-cyan" style="font-size:4rem"></i>
+    </div>
+    <h1 class="hero-title mb-3">
+      <span class="text-cyan">Tact</span><span class="text-white">IQ</span>
+      <span class="text-gradient"> AI</span>
+    </h1>
+    <p class="hero-subtitle mb-2">Football Tactical Recommendation System</p>
+    <p class="hero-desc mb-5">Powered by Machine Learning · Real-time Match Analysis · Smart Formation Advice</p>
+
+    <div class="hero-stats row justify-content-center mb-5 g-3">
+      <div class="col-auto"><div class="stat-pill"><span class="stat-num">3</span><span class="stat-label">Match Types</span></div></div>
+      <div class="col-auto"><div class="stat-pill"><span class="stat-num">700+</span><span class="stat-label">Training Samples</span></div></div>
+      <div class="col-auto"><div class="stat-pill"><span class="stat-num">RF</span><span class="stat-label">Random Forest</span></div></div>
+    </div>
+
+    <button class="btn btn-hero btn-lg px-5 py-3" id="getStartedBtn">
+      <i class="fas fa-play me-2"></i>Get Started
+      <span class="btn-glow"></span>
+    </button>
+  </div>
+
+  <!-- Floating elements -->
+  <div class="float-el float-1"><i class="fas fa-chess-board"></i></div>
+  <div class="float-el float-2"><i class="fas fa-chart-line"></i></div>
+  <div class="float-el float-3"><i class="fas fa-trophy"></i></div>
+  <div class="float-el float-4"><i class="fas fa-shield-alt"></i></div>
+</div>
+
+<script>
+// Check session on load
+fetch('/api/check_session').then(r=>r.json()).then(d=>{
+  if(d.logged_in) window.location.href='/select';
+});
+
+document.getElementById('getStartedBtn').addEventListener('click', ()=>{
+  new bootstrap.Modal(document.getElementById('authModal'), 
+      {backdrop:'static'}).show();
+});
+
+document.getElementById('getStartedBtn').addEventListener('click', ()=>{
+  new bootstrap.Modal(document.getElementById('authModal'), {backdrop:'static'}).show();
+});
+
+// Auth tabs
+document.querySelectorAll('[data-tab]').forEach(el => {
+  el.addEventListener('click', e => {
+    e.preventDefault();
+    const tab = el.dataset.tab;
+    document.querySelectorAll('[data-tab]').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('loginForm').style.display = tab==='login' ? 'block' : 'none';
+    document.getElementById('registerForm').style.display = tab==='register' ? 'block' : 'none';
+  });
+});
+
+async function doLogin() {
+  const u = document.getElementById('loginUser').value;
+  const p = document.getElementById('loginPass').value;
+  const r = await fetch('/api/login', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({username:u, password:p})});
+  const d = await r.json();
+  if(d.success) window.location.href='/select';
+  else document.getElementById('loginErr').textContent = d.msg;
+}
+
+async function doRegister() {
+  const u = document.getElementById('regUser').value;
+  const p = document.getElementById('regPass').value;
+  const p2 = document.getElementById('regPass2').value;
+  if(p !== p2) { document.getElementById('regErr').textContent = 'Passwords do not match'; return; }
+  const r = await fetch('/api/register', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({username:u, password:p})});
+  const d = await r.json();
+  if(d.success) window.location.href='/select';
+  else document.getElementById('regErr').textContent = d.msg;
+}
+
+// Particle animation
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+const particles = Array.from({length:60}, ()=>({
+  x: Math.random()*canvas.width, y: Math.random()*canvas.height,
+  vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5,
+  r: Math.random()*2+1, a: Math.random()
+}));
+function animParticles() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0||p.x>canvas.width) p.vx*=-1;
+    if(p.y<0||p.y>canvas.height) p.vy*=-1;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = `rgba(0,212,255,${p.a*0.4})`; ctx.fill();
+  });
+  requestAnimationFrame(animParticles);
+}
+animParticles();
+window.addEventListener('resize', ()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
+
+// Enter key for login
+document.getElementById('loginPass').addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
+document.getElementById('regPass2').addEventListener('keydown', e=>{ if(e.key==='Enter') doRegister(); });
+</script>
+{% endblock %}

@@ -1,0 +1,690 @@
+{
+  "doree": [
+    {
+      "timestamp": "2026-04-07T13:30:46.743180",
+      "match_type": "11s",
+      "input": {
+        "match_type": "11s",
+        "our_formation": "3-1-4-2",
+        "our_possession_percentage": 55,
+        "our_shot": 0,
+        "our_shot_target": 0,
+        "our_goal_count": 0,
+        "our_pressing_level": "high",
+        "opp_formation": "3-1-4-2",
+        "opp_possession_percentage": 45,
+        "opp_shot": 0,
+        "opp_shot_on_target": 0,
+        "opp_goal_count": 0,
+        "opp_pressing_level": "medium",
+        "opp_attack_side": "center",
+        "opp_play_style": "out_wide"
+      },
+      "result": {
+        "recom_formation": "4-3-3",
+        "recom_playstyle": "possession_game",
+        "recom_pressing_level": "high",
+        "recom_defensive_line": "High",
+        "recom_focus_side": "center",
+        "win_probability_increase": 10.0,
+        "match_type": "11s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T14:08:18.231437",
+      "match_type": "5s",
+      "input": {
+        "match_type": "5s",
+        "our_formation": "1-2-1",
+        "our_possession_percentage": 35,
+        "our_shot": 0,
+        "our_shot_on_target": 0,
+        "our_goal": 0,
+        "opp_formation": "1-2-1",
+        "opp_possession_percentage": 65,
+        "opp_shot": 0,
+        "opp_shot_on_target": 0,
+        "opp_goal": 0,
+        "opp_play_style": "Fluid_style"
+      },
+      "result": {
+        "recom_formation": "2-1-1",
+        "recom_play_style": "Counter",
+        "win_probability_increase": 8.1,
+        "match_type": "5s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T14:21:12.328648",
+      "match_type": "11s",
+      "input": {
+        "match_type": "11s",
+        "our_formation": "4-1-2-3",
+        "our_possession_percentage": 46,
+        "our_shot": 5,
+        "our_shot_target": 3,
+        "our_goal_count": 1,
+        "our_pressing_level": "low",
+        "opp_formation": "3-2-3-2",
+        "opp_possession_percentage": 54,
+        "opp_shot": 8,
+        "opp_shot_on_target": 5,
+        "opp_goal_count": 2,
+        "opp_pressing_level": "medium",
+        "opp_attack_side": "both",
+        "opp_play_style": "quick_counter"
+      },
+      "result": {
+        "recom_formation": "4-1-4-1",
+        "recom_playstyle": "possession_game",
+        "recom_pressing_level": "low",
+        "recom_defensive_line": "Deep",
+        "recom_focus_side": "left",
+        "win_probability_increase": 6.1,
+        "match_type": "11s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T14:22:57.848497",
+      "type": "match_tracker",
+      "data": {
+        "our_possession_percentage": 100,
+        "opp_possession_percentage": 0,
+        "our_shot": 3,
+        "opp_shot": 6,
+        "our_shot_on_target": 2,
+        "opp_shot_on_target": 4,
+        "our_goal": 1,
+        "opp_goal": 2
+      }
+    },
+    {
+      "timestamp": "2026-04-07T14:23:52.873724",
+      "type": "match_tracker",
+      "data": {
+        "our_possession_percentage": 20,
+        "opp_possession_percentage": 80,
+        "our_shot": 3,
+        "opp_shot": 6,
+        "our_shot_on_target": 2,
+        "opp_shot_on_target": 4,
+        "our_goal": 1,
+        "opp_goal": 2
+      }
+    },
+    {
+      "timestamp": "2026-04-07T14:28:05.245897",
+      "type": "match_tracker",
+      "data": {
+        "our_possession_percentage": 86,
+        "opp_possession_percentage": 14,
+        "our_shot": 0,
+        "opp_shot": 4,
+        "our_shot_on_target": 0,
+        "opp_shot_on_target": 2,
+        "our_goal": 0,
+        "opp_goal": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-07T15:38:35.205057",
+      "type": "match_tracker",
+      "data": {
+        "our_possession_percentage": 73,
+        "opp_possession_percentage": 27,
+        "our_shot": 3,
+        "opp_shot": 3,
+        "our_shot_on_target": 2,
+        "opp_shot_on_target": 2,
+        "our_goal": 1,
+        "opp_goal": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-07T15:38:35.259353",
+      "type": "match_tracker",
+      "data": {
+        "our_possession_percentage": 15,
+        "opp_possession_percentage": 85,
+        "our_shot": 3,
+        "opp_shot": 3,
+        "our_shot_on_target": 2,
+        "opp_shot_on_target": 2,
+        "our_goal": 1,
+        "opp_goal": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-07T15:49:08.241899",
+      "match_type": "5s",
+      "input": {
+        "match_type": "5s",
+        "our_formation": "1-3",
+        "our_possession_percentage": 100,
+        "our_shot": 0,
+        "our_shot_on_target": 0,
+        "our_goal": 0,
+        "opp_formation": "1-2-1",
+        "opp_possession_percentage": 0,
+        "opp_shot": 25,
+        "opp_shot_on_target": 0,
+        "opp_goal": 15,
+        "opp_play_style": "Possession_game"
+      },
+      "result": {
+        "recom_formation": "2-2",
+        "recom_play_style": "Tiki-taka",
+        "win_probability_increase": 6.5,
+        "match_type": "5s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T15:50:28.288059",
+      "match_type": "5s",
+      "input": {
+        "match_type": "5s",
+        "our_formation": "1-3",
+        "our_possession_percentage": 100,
+        "our_shot": 0,
+        "our_shot_on_target": 0,
+        "our_goal": 0,
+        "opp_formation": "1-2-1",
+        "opp_possession_percentage": 0,
+        "opp_shot": 25,
+        "opp_shot_on_target": 0,
+        "opp_goal": 15,
+        "opp_play_style": "Possession_game"
+      },
+      "result": {
+        "recom_formation": "2-2",
+        "recom_play_style": "Tiki-taka",
+        "win_probability_increase": 6.5,
+        "match_type": "5s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T15:52:55.281505",
+      "type": "match_tracker",
+      "data": {
+        "our_possession_percentage": 0,
+        "opp_possession_percentage": 100,
+        "our_shot": 0,
+        "opp_shot": 0,
+        "our_shot_on_target": 0,
+        "opp_shot_on_target": 0,
+        "our_goal": 0,
+        "opp_goal": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-07T15:53:50.006707",
+      "match_type": "5s",
+      "input": {
+        "match_type": "5s",
+        "our_formation": "1-2-1",
+        "our_possession_percentage": 0,
+        "our_shot": 0,
+        "our_shot_on_target": 0,
+        "our_goal": 0,
+        "opp_formation": "1-3",
+        "opp_possession_percentage": 100,
+        "opp_shot": 0,
+        "opp_shot_on_target": 0,
+        "opp_goal": 0,
+        "opp_play_style": "Pivot_style"
+      },
+      "result": {
+        "recom_formation": "2-1-1",
+        "recom_play_style": "Counter",
+        "win_probability_increase": 7.7,
+        "match_type": "5s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T15:54:26.055211",
+      "match_type": "5s",
+      "input": {
+        "match_type": "5s",
+        "our_formation": "1-2-1",
+        "our_possession_percentage": 50,
+        "our_shot": 8,
+        "our_shot_on_target": 13,
+        "our_goal": 6,
+        "opp_formation": "1-3",
+        "opp_possession_percentage": 50,
+        "opp_shot": 0,
+        "opp_shot_on_target": 0,
+        "opp_goal": 0,
+        "opp_play_style": "Pivot_style"
+      },
+      "result": {
+        "recom_formation": "2-1-1",
+        "recom_play_style": "Possession_game",
+        "win_probability_increase": 7.2,
+        "match_type": "5s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T15:54:38.460044",
+      "match_type": "5s",
+      "input": {
+        "match_type": "5s",
+        "our_formation": "1-2-1",
+        "our_possession_percentage": 3,
+        "our_shot": 8,
+        "our_shot_on_target": 13,
+        "our_goal": 6,
+        "opp_formation": "1-3",
+        "opp_possession_percentage": 97,
+        "opp_shot": 0,
+        "opp_shot_on_target": 0,
+        "opp_goal": 0,
+        "opp_play_style": "Pivot_style"
+      },
+      "result": {
+        "recom_formation": "2-1-1",
+        "recom_play_style": "Counter",
+        "win_probability_increase": 8.4,
+        "match_type": "5s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T15:54:45.726446",
+      "match_type": "5s",
+      "input": {
+        "match_type": "5s",
+        "our_formation": "1-2-1",
+        "our_possession_percentage": 80,
+        "our_shot": 8,
+        "our_shot_on_target": 13,
+        "our_goal": 6,
+        "opp_formation": "1-3",
+        "opp_possession_percentage": 20,
+        "opp_shot": 0,
+        "opp_shot_on_target": 0,
+        "opp_goal": 0,
+        "opp_play_style": "Pivot_style"
+      },
+      "result": {
+        "recom_formation": "2-1-1",
+        "recom_play_style": "Tiki-taka",
+        "win_probability_increase": 8.8,
+        "match_type": "5s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T15:54:58.995490",
+      "match_type": "5s",
+      "input": {
+        "match_type": "5s",
+        "our_formation": "1-2-1",
+        "our_possession_percentage": 80,
+        "our_shot": 8,
+        "our_shot_on_target": 0,
+        "our_goal": 0,
+        "opp_formation": "1-3",
+        "opp_possession_percentage": 20,
+        "opp_shot": 0,
+        "opp_shot_on_target": 0,
+        "opp_goal": 0,
+        "opp_play_style": "Pivot_style"
+      },
+      "result": {
+        "recom_formation": "2-2",
+        "recom_play_style": "Tiki-taka",
+        "win_probability_increase": 7.2,
+        "match_type": "5s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T15:55:08.004483",
+      "match_type": "5s",
+      "input": {
+        "match_type": "5s",
+        "our_formation": "1-2-1",
+        "our_possession_percentage": 39,
+        "our_shot": 8,
+        "our_shot_on_target": 0,
+        "our_goal": 0,
+        "opp_formation": "1-3",
+        "opp_possession_percentage": 61,
+        "opp_shot": 0,
+        "opp_shot_on_target": 0,
+        "opp_goal": 0,
+        "opp_play_style": "Pivot_style"
+      },
+      "result": {
+        "recom_formation": "2-1-1",
+        "recom_play_style": "Counter",
+        "win_probability_increase": 8.0,
+        "match_type": "5s"
+      }
+    }
+  ],
+  "chat_doree": [
+    {
+      "content": ".",
+      "role": "user"
+    },
+    {
+      "content": "I'm excited to chat with you about football. What would you like to know? Are you looking for tips on improving your game, or perhaps wanting to discuss the latest tactics and formations? I'm here to help. Some topics we could explore include:\n* Team formations and strategies\n* Player development and training\n* Match analysis and tactics\n* Football rules and regulations\nLet me know what's on your mind, and I'll do my best to provide helpful and insightful advice.",
+      "role": "assistant"
+    },
+    {
+      "role": "user",
+      "content": "1242"
+    },
+    {
+      "role": "assistant",
+      "content": "I can only answer football-related questions! Ask me about tactics, formations, training or rules. It seems like you've entered a number, but I'm not sure how it relates to football. Could you please provide more context or clarify your question? I'm here to help with any football-related queries you may have. Some topics we could discuss include:\n* Team management and tactics\n* Player positions and roles\n* Football training and conditioning\n* Rules and regulations of the game\nLet me know how I can assist you."
+    }
+  ],
+  "david": [
+    {
+      "timestamp": "2026-04-07T14:37:55.497024",
+      "match_type": "11s",
+      "input": {
+        "match_type": "11s",
+        "our_formation": "4-3-3",
+        "our_possession_percentage": 60,
+        "our_shot": 1,
+        "our_shot_target": 1,
+        "our_goal_count": 7,
+        "our_pressing_level": "low",
+        "opp_formation": "4-3-3",
+        "opp_possession_percentage": 40,
+        "opp_shot": 20,
+        "opp_shot_on_target": 8,
+        "opp_goal_count": 0,
+        "opp_pressing_level": "low",
+        "opp_attack_side": "left",
+        "opp_play_style": "quick_counter"
+      },
+      "result": {
+        "recom_formation": "4-1-4-1",
+        "recom_playstyle": "possession_game",
+        "recom_pressing_level": "high",
+        "recom_defensive_line": "High",
+        "recom_focus_side": "center",
+        "win_probability_increase": 11.0,
+        "match_type": "11s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T14:39:04.582254",
+      "match_type": "11s",
+      "input": {
+        "match_type": "11s",
+        "our_formation": "4-3-3",
+        "our_possession_percentage": 60,
+        "our_shot": 1,
+        "our_shot_target": 1,
+        "our_goal_count": 7,
+        "our_pressing_level": "low",
+        "opp_formation": "4-3-3",
+        "opp_possession_percentage": 40,
+        "opp_shot": 20,
+        "opp_shot_on_target": 8,
+        "opp_goal_count": 0,
+        "opp_pressing_level": "low",
+        "opp_attack_side": "left",
+        "opp_play_style": "long_ball"
+      },
+      "result": {
+        "recom_formation": "4-1-4-1",
+        "recom_playstyle": "possession_game",
+        "recom_pressing_level": "high",
+        "recom_defensive_line": "High",
+        "recom_focus_side": "left",
+        "win_probability_increase": 11.0,
+        "match_type": "11s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T14:39:44.289808",
+      "match_type": "11s",
+      "input": {
+        "match_type": "11s",
+        "our_formation": "4-3-3",
+        "our_possession_percentage": 60,
+        "our_shot": 1,
+        "our_shot_target": 1,
+        "our_goal_count": 7,
+        "our_pressing_level": "low",
+        "opp_formation": "4-3-3",
+        "opp_possession_percentage": 40,
+        "opp_shot": 20,
+        "opp_shot_on_target": 8,
+        "opp_goal_count": 0,
+        "opp_pressing_level": "low",
+        "opp_attack_side": "left",
+        "opp_play_style": "quick_counter"
+      },
+      "result": {
+        "recom_formation": "4-1-4-1",
+        "recom_playstyle": "possession_game",
+        "recom_pressing_level": "high",
+        "recom_defensive_line": "High",
+        "recom_focus_side": "center",
+        "win_probability_increase": 11.0,
+        "match_type": "11s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T14:40:35.691069",
+      "match_type": "11s",
+      "input": {
+        "match_type": "11s",
+        "our_formation": "4-3-3",
+        "our_possession_percentage": 14,
+        "our_shot": 1,
+        "our_shot_target": 1,
+        "our_goal_count": 7,
+        "our_pressing_level": "low",
+        "opp_formation": "4-3-3",
+        "opp_possession_percentage": 86,
+        "opp_shot": 20,
+        "opp_shot_on_target": 8,
+        "opp_goal_count": 0,
+        "opp_pressing_level": "low",
+        "opp_attack_side": "left",
+        "opp_play_style": "quick_counter"
+      },
+      "result": {
+        "recom_formation": "4-1-4-1",
+        "recom_playstyle": "quick_counter",
+        "recom_pressing_level": "low",
+        "recom_defensive_line": "Deep",
+        "recom_focus_side": "left",
+        "win_probability_increase": 7.8,
+        "match_type": "11s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T14:42:40.897653",
+      "match_type": "11s",
+      "input": {
+        "match_type": "11s",
+        "our_formation": "3-1-4-2",
+        "our_possession_percentage": 88,
+        "our_shot": 16,
+        "our_shot_target": 8,
+        "our_goal_count": 3,
+        "our_pressing_level": "high",
+        "opp_formation": "4-3-3",
+        "opp_possession_percentage": 12,
+        "opp_shot": 4,
+        "opp_shot_on_target": 2,
+        "opp_goal_count": 0,
+        "opp_pressing_level": "low",
+        "opp_attack_side": "left",
+        "opp_play_style": "quick_counter"
+      },
+      "result": {
+        "recom_formation": "4-3-3",
+        "recom_playstyle": "balanced",
+        "recom_pressing_level": "high",
+        "recom_defensive_line": "High",
+        "recom_focus_side": "center",
+        "win_probability_increase": 22.0,
+        "match_type": "11s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T14:46:25.278009",
+      "match_type": "11s",
+      "input": {
+        "match_type": "11s",
+        "our_formation": "3-1-4-2",
+        "our_possession_percentage": 40,
+        "our_shot": 16,
+        "our_shot_target": 8,
+        "our_goal_count": 3,
+        "our_pressing_level": "high",
+        "opp_formation": "4-3-3",
+        "opp_possession_percentage": 60,
+        "opp_shot": 4,
+        "opp_shot_on_target": 2,
+        "opp_goal_count": 0,
+        "opp_pressing_level": "low",
+        "opp_attack_side": "both",
+        "opp_play_style": "quick_counter"
+      },
+      "result": {
+        "recom_formation": "4-3-3",
+        "recom_playstyle": "possession_game",
+        "recom_pressing_level": "high",
+        "recom_defensive_line": "High",
+        "recom_focus_side": "center",
+        "win_probability_increase": 13.8,
+        "match_type": "11s"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T14:51:21.991430",
+      "type": "match_tracker",
+      "data": {
+        "our_possession_percentage": 100,
+        "opp_possession_percentage": 0,
+        "our_shot": 3,
+        "opp_shot": 2,
+        "our_shot_on_target": 2,
+        "opp_shot_on_target": 3,
+        "our_goal": 1,
+        "opp_goal": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-07T14:52:13.710485",
+      "type": "match_tracker",
+      "data": {
+        "our_possession_percentage": 34,
+        "opp_possession_percentage": 66,
+        "our_shot": 3,
+        "opp_shot": 2,
+        "our_shot_on_target": 2,
+        "opp_shot_on_target": 1,
+        "our_goal": 1,
+        "opp_goal": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-07T14:53:28.227273",
+      "type": "match_tracker",
+      "data": {
+        "our_possession_percentage": 36,
+        "opp_possession_percentage": 64,
+        "our_shot": 1,
+        "opp_shot": 1,
+        "our_shot_on_target": 0,
+        "opp_shot_on_target": 0,
+        "our_goal": 0,
+        "opp_goal": 0
+      }
+    }
+  ],
+  "chat_david": [
+    {
+      "role": "user",
+      "content": "What is Tiki-taka and how to implement it?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tiki-taka is a playing style that originated from Spanish football, particularly from FC Barcelona and the Spanish national team. It's a possession-based football philosophy that focuses on short, precise passes to maintain possession and wear down the opposition. Here's a breakdown of the key principles and how to implement them:\n\n**Key principles of Tiki-taka:**\n\n* **Possession football**: The team aims to maintain possession of the ball for as long as possible, using short passes to control the tempo of the game.\n* **Short passes**: Players use short, precise passes to move the ball around the field, often using a \"give-and-go\" approach to create space and confusion among the opposition.\n* **High-pressure defense**: When the opposition gains possession, the team applies high pressure to win the ball back quickly, using a pressing system to harass the opponent and limit their time on the ball.\n* **Flexibility and interchanging**: Players are encouraged to be flexible and interchange positions, creating confusion among the opposition and exploiting space.\n\n**Implementing Tiki-taka:**\n\n* **Develop a strong possession game**: Focus on short passing drills, such as 4v4 or 5v5 games, to improve players' ability to maintain possession in tight spaces.\n* **Encourage flexibility and interchanging**: Design drills that encourage players to move into different positions and create space, such as a \"rotation game\" where players rotate through different positions.\n* **Teach high-pressure defense**: Practice pressing systems, such as a \"pressing trap\" where players apply pressure to the opponent in a specific area, to win the ball back quickly.\n* **Use a 4-3-3 or 4-2-3-1 formation**: These formations provide a strong foundation for Tiki-taka, with a solid defensive base and creative midfielders who can control the tempo of the game.\n* **Focus on player movement and positioning**: Encourage players to make intelligent runs and create space, using visual cues such as body language and spatial awareness to create opportunities.\n\n**Tips for coaches:**\n\n* **Start with simple possession drills**: Gradually increase the complexity of the drills as players become more comfortable with the Tiki-taka style.\n* **Encourage creativity and freedom**: Allow players to express themselves and try new things, rather than adhering to a rigid system.\n* **Focus on player development**: Develop players who are comfortable with the ball at their feet and can control the tempo of the game.\n* **Be patient**: Implementing Tiki-taka takes time, so be patient and focus on gradual progress rather than immediate results.\n\nRemember, Tiki-taka is a philosophy that requires a high level of technical skill, tactical awareness, and physical fitness. With patience, dedication, and the right coaching, your team can master this exciting and effective playing style."
+    }
+  ],
+  "Thowsif": [
+    {
+      "timestamp": "2026-04-08T22:35:09.791938",
+      "type": "match_tracker",
+      "data": {
+        "our_possession_percentage": 43,
+        "opp_possession_percentage": 57,
+        "our_shot": 1,
+        "opp_shot": 5,
+        "our_shot_on_target": 1,
+        "opp_shot_on_target": 4,
+        "our_goal": 1,
+        "opp_goal": 3
+      }
+    },
+    {
+      "timestamp": "2026-04-08T22:35:47.045547",
+      "match_type": "5s",
+      "input": {
+        "match_type": "5s",
+        "our_formation": "1-2-1",
+        "our_possession_percentage": 43,
+        "our_shot": 1,
+        "our_shot_on_target": 1,
+        "our_goal": 1,
+        "opp_formation": "1-2-1",
+        "opp_possession_percentage": 57,
+        "opp_shot": 5,
+        "opp_shot_on_target": 4,
+        "opp_goal": 3,
+        "opp_play_style": "Pivot_style"
+      },
+      "result": {
+        "recom_formation": "2-1-1",
+        "recom_play_style": "Long_ball",
+        "win_probability_increase": 6.4,
+        "match_type": "5s"
+      }
+    },
+    {
+      "timestamp": "2026-04-08T22:36:00.870348",
+      "match_type": "5s",
+      "input": {
+        "match_type": "5s",
+        "our_formation": "1-2-1",
+        "our_possession_percentage": 43,
+        "our_shot": 1,
+        "our_shot_on_target": 1,
+        "our_goal": 1,
+        "opp_formation": "1-2-1",
+        "opp_possession_percentage": 57,
+        "opp_shot": 5,
+        "opp_shot_on_target": 4,
+        "opp_goal": 3,
+        "opp_play_style": "Pivot_style"
+      },
+      "result": {
+        "recom_formation": "2-1-1",
+        "recom_play_style": "Long_ball",
+        "win_probability_increase": 6.4,
+        "match_type": "5s"
+      }
+    }
+  ],
+  "chat_Thowsif": [
+    {
+      "role": "user",
+      "content": "hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello. I'm excited to chat with you about football. What would you like to know or discuss? Are you looking for tips on improving your game, exploring different formations, or perhaps analyzing a specific team's tactics? I'm here to help. Some potential topics we could cover include:\n* Training drills to enhance your skills\n* Strategies for outmaneuvering opponents\n* Player development and positioning\n* Game-day preparation and mindset\nLet me know what's on your mind, and I'll do my best to provide guidance and advice."
+    }
+  ]
+}

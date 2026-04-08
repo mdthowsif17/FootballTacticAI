@@ -1,0 +1,427 @@
+{% extends "base.html" %}
+{% block title %}11-a-Side Input - TactIQ AI{% endblock %}
+{% block body %}
+<div class="app-wrapper">
+<nav class="navbar-top">
+  <div class="container-fluid px-3 d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center gap-2">
+      <a href="/match-select" class="back-btn"><i class="fas fa-arrow-left"></i><span class="d-none d-sm-inline ms-1">Back</span></a>
+      <div class="brand-logo d-none d-md-block"><i class="fas fa-futbol text-cyan me-2"></i><span class="fw-bold text-white">TactIQ <span class="text-cyan">AI</span></span></div>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge d-none d-sm-inline" style="background:rgba(0,212,255,0.2);color:var(--cyan);font-size:0.8rem;">11-a-Side</span>
+      <div class="user-badge"><i class="fas fa-user-circle me-1"></i><span class="d-none d-sm-inline">{{ user }}</span></div>
+    </div>
+  </div>
+</nav>
+
+  <div class="input-container">
+    <div class="text-center mb-4">
+      <h2 class="section-title">Match <span class="text-cyan">Analysis</span> <span
+          style="color:#94a3b8;font-size:1.2rem;font-weight:400">11-a-Side</span></h2>
+      <p class="text-muted">Enter current match statistics to get AI tactical recommendations</p>
+    </div>
+
+    <!-- Our Team -->
+    <div class="section-card">
+      <h5><i class="fas fa-shield-alt text-cyan"></i> Our Team</h5>
+      <div class="row g-3">
+        <div class="col-12 col-md-4">
+          <label class="form-label">Formation</label>
+          <div class="autocomplete-wrapper">
+            <input type="text" id="our_formation" class="dark-input w-100" placeholder="e.g. 4-3-3" autocomplete="off">
+            <div class="autocomplete-list" id="our_formation_list" style="display:none"></div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <label class="form-label">Possession % <span class="slider-val" id="our_poss_val">0</span></label>
+          <input type="range" id="our_possession_percentage" min="0" max="100" value="0" class="w-100">
+        </div>
+        <div class="col-12 col-md-4">
+          <label class="form-label">Pressing Level</label>
+          <div class="radio-group">
+            <div class="radio-pill"><input type="radio" name="our_pressing" id="op_low" value="low"><label
+                for="op_low">Low</label></div>
+            <div class="radio-pill"><input type="radio" name="our_pressing" id="op_med" value="medium"><label
+                for="op_med">Medium</label></div>
+            <div class="radio-pill"><input type="radio" name="our_pressing" id="op_high" value="high"><label
+                for="op_high">High</label></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <label class="form-label">Shots <span class="slider-val" id="our_shot_val">0</span></label>
+          <input type="range" id="our_shot" min="0" max="30" value="0" class="w-100">
+        </div>
+        <div class="col-6 col-md-3">
+          <label class="form-label">Shots on Target <span class="slider-val" id="our_sot_val">0</span></label>
+          <input type="range" id="our_shot_target" min="0" max="20" value="0" class="w-100">
+        </div>
+        <div class="col-6 col-md-3">
+          <label class="form-label">Goals <span class="slider-val" id="our_goal_val">0</span></label>
+          <input type="range" id="our_goal_count" min="0" max="15" value="0" class="w-100">
+        </div>
+      </div>
+    </div>
+
+    <!-- Opponent -->
+    <div class="section-card">
+      <h5><i class="fas fa-chess-king" style="color:#f472b6"></i> Opponent Team</h5>
+      <div class="row g-3">
+        <div class="col-12 col-md-4">
+          <label class="form-label">Formation</label>
+          <div class="autocomplete-wrapper">
+            <input type="text" id="opp_formation" class="dark-input w-100" placeholder="e.g. 4-4-2" autocomplete="off">
+            <div class="autocomplete-list" id="opp_formation_list" style="display:none"></div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <label class="form-label">Possession % <span class="slider-val" id="opp_poss_val">0</span></label>
+          <input type="range" id="opp_possession_percentage" min="0" max="100" value="0" class="w-100">
+        </div>
+        <div class="col-12 col-md-4">
+          <label class="form-label">Pressing Level</label>
+          <div class="radio-group">
+            <div class="radio-pill radio-pill-purple"><input type="radio" name="opp_pressing" id="opp_low"
+                value="low"><label for="opp_low">Low</label></div>
+            <div class="radio-pill radio-pill-purple"><input type="radio" name="opp_pressing" id="opp_med"
+                value="medium"><label for="opp_med">Medium</label></div>
+            <div class="radio-pill radio-pill-purple"><input type="radio" name="opp_pressing" id="opp_high"
+                value="high"><label for="opp_high">High</label></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <label class="form-label">Shots <span class="slider-val" id="opp_shot_val">0</span></label>
+          <input type="range" id="opp_shot" min="0" max="30" value="0" class="w-100">
+        </div>
+        <div class="col-6 col-md-3">
+          <label class="form-label">Shots on Target <span class="slider-val" id="opp_sot_val">0</span></label>
+          <input type="range" id="opp_shot_on_target" min="0" max="20" value="0" class="w-100">
+        </div>
+        <div class="col-6 col-md-3">
+          <label class="form-label">Goals <span class="slider-val" id="opp_goal_val">0</span></label>
+          <input type="range" id="opp_goal_count" min="0" max="15" value="0" class="w-100">
+        </div>
+        <div class="col-12 col-md-6">
+          <label class="form-label">Attack Side</label>
+          <div class="radio-group">
+            <div class="radio-pill"><input type="radio" name="opp_attack" id="oa_left" value="left"><label
+                for="oa_left">Left</label></div>
+            <div class="radio-pill"><input type="radio" name="opp_attack" id="oa_right" value="right"><label
+                for="oa_right">Right</label></div>
+            <div class="radio-pill"><input type="radio" name="opp_attack" id="oa_center" value="center"><label
+                for="oa_center">Center</label></div>
+            <div class="radio-pill"><input type="radio" name="opp_attack" id="oa_both" value="both"><label
+                for="oa_both">Both</label></div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <label class="form-label">Play Style</label>
+          <div class="radio-group">
+            <div class="radio-pill"><input type="radio" name="opp_style" id="os_pos" value="possession_game"><label
+                for="os_pos">Possession</label></div>
+            <div class="radio-pill"><input type="radio" name="opp_style" id="os_qc" value="quick_counter"><label
+                for="os_qc">Quick Counter</label></div>
+            <div class="radio-pill"><input type="radio" name="opp_style" id="os_lb" value="long_ball"><label
+                for="os_lb">Long Ball</label></div>
+            <div class="radio-pill"><input type="radio" name="opp_style" id="os_lbc" value="long_ball_counter"><label
+                for="os_lbc">LB Counter</label></div>
+            <div class="radio-pill"><input type="radio" name="opp_style" id="os_ow" value="out_wide"><label
+                for="os_ow">Out Wide</label></div>
+            <div class="radio-pill"><input type="radio" name="opp_style" id="os_bal" value="balanced"><label
+                for="os_bal">Balanced</label></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="submit-btn" onclick="submitForm()">
+      <span id="submitText"><i class="fas fa-brain me-2"></i>Get AI Recommendation</span>
+      <span id="submitLoad" style="display:none"><span class="loading-spinner me-2"></span>Analyzing...</span>
+    </button>
+  </div>
+</div>
+
+<!-- Result Modal -->
+<div class="modal fade" id="resultModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content dark-modal">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title text-white"><i class="fas fa-brain text-cyan me-2"></i>AI Tactical Recommendation</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="resultBody"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const labelData = {{ label_data| safe }};
+  const formations11 = [...new Set([...labelData['11s']['our_formation'], ...labelData['11s']['opp_formation']])].sort();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initAutocomplete('our_formation', 'our_formation_list', formations11);
+    initAutocomplete('opp_formation', 'opp_formation_list', formations11);
+    document.getElementById('our_formation').value = '';
+    document.getElementById('opp_formation').value = '';
+
+    [['our_possession_percentage', 'our_poss_val'], ['our_shot', 'our_shot_val'], ['our_shot_target', 'our_sot_val'], ['our_goal_count', 'our_goal_val'],
+    ['opp_possession_percentage', 'opp_poss_val'], ['opp_shot', 'opp_shot_val'], ['opp_shot_on_target', 'opp_sot_val'], ['opp_goal_count', 'opp_goal_val']].forEach(([s, v]) => syncSlider(s, v));
+    // Auto possession sync
+    document.getElementById('our_possession_percentage').addEventListener('input', function () {
+      const ourVal = parseInt(this.value);
+      const oppVal = 100 - ourVal;
+      document.getElementById('opp_possession_percentage').value = oppVal;
+      document.getElementById('our_poss_val').textContent = ourVal;
+      document.getElementById('opp_poss_val').textContent = oppVal;
+    });
+
+    document.getElementById('opp_possession_percentage').addEventListener('input', function () {
+      const oppVal = parseInt(this.value);
+      const ourVal = 100 - oppVal;
+      document.getElementById('our_possession_percentage').value = ourVal;
+      document.getElementById('opp_poss_val').textContent = oppVal;
+      document.getElementById('our_poss_val').textContent = ourVal;
+    });
+  });
+
+  const trackerFill = sessionStorage.getItem('tracker_stats');
+  if (trackerFill) {
+    const d = JSON.parse(trackerFill);
+    setTimeout(() => {
+      const fs = (id, vid, val) => {
+        if (val !== undefined) {
+          const el = document.getElementById(id);
+          el.value = val;
+          document.getElementById(vid).textContent = val;
+          el.disabled = true;  // ← Lock pannrom
+          el.style.opacity = '0.6';
+          el.style.cursor = 'not-allowed';
+        }
+      };
+      fs('our_possession_percentage', 'our_poss_val', d.our_possession_percentage);
+      fs('our_shot', 'our_shot_val', d.our_shot);
+      fs('our_shot_target', 'our_sot_val', d.our_shot_on_target);
+      fs('our_goal_count', 'our_goal_val', d.our_goal);
+      fs('opp_possession_percentage', 'opp_poss_val', d.opp_possession_percentage);
+      fs('opp_shot', 'opp_shot_val', d.opp_shot);
+      fs('opp_shot_on_target', 'opp_sot_val', d.opp_shot_on_target);
+      fs('opp_goal_count', 'opp_goal_val', d.opp_goal);
+      sessionStorage.removeItem('tracker_stats');
+
+      // ← Locked notice kaatum
+      showToast('Stats loaded from Match Tracker — locked for accuracy!');
+    }, 300);
+  }
+  async function submitForm() {
+    const ourF = document.getElementById('our_formation').value.trim();
+    const oppF = document.getElementById('opp_formation').value.trim();
+    const validFormations = formations11;
+
+    if (!ourF) {
+      showToast('Enter our team formation!', 'error');
+      document.getElementById('our_formation').focus();
+      return;
+    }
+    if (!validFormations.includes(ourF)) {
+      showToast('Enter our valid formation!', 'error');
+      document.getElementById('our_formation').focus();
+      return;
+    }
+    if (!oppF) {
+      showToast('Enter opponent formation!', 'error');
+      document.getElementById('opp_formation').focus();
+      return;
+    }
+    if (!validFormations.includes(oppF)) {
+      showToast('Enter opponent valid formation!', 'error');
+      document.getElementById('opp_formation').focus();
+      return;
+    }
+    const ourPressing = document.querySelector('[name=our_pressing]:checked');
+    if (!ourPressing) {
+      showToast('Select Our pressing level!', 'error');
+      return;
+    }
+
+
+
+    const ourPoss = +document.getElementById('our_possession_percentage').value;
+    const oppPoss = +document.getElementById('opp_possession_percentage').value;
+    if (ourPoss === 0 && oppPoss === 0) {
+      showToast('Set Possession % !', 'error');
+      return;
+    }
+
+    const oppStyle = document.querySelector('[name=opp_style]:checked');
+    if (!oppStyle) {
+      showToast('Select opponent play style!', 'error');
+      return;
+    }
+    const oppPressing = document.querySelector('[name=opp_pressing]:checked');
+    if (!oppPressing) {
+      showToast('Select opponent pressing level!', 'error');
+      return;
+    }
+
+    const oppAttack = document.querySelector('[name=opp_attack]:checked');
+    if (!oppAttack) {
+      showToast('Select Opponent attack side!', 'error');
+      return;
+    }
+
+    document.getElementById('submitText').style.display = 'none';
+    document.getElementById('submitLoad').style.display = 'inline-flex';
+
+    const payload = {
+      match_type: '11s',
+      our_formation: ourF,
+      our_possession_percentage: ourPoss,
+      our_shot: +document.getElementById('our_shot').value,
+      our_shot_target: +document.getElementById('our_shot_target').value,
+      our_goal_count: +document.getElementById('our_goal_count').value,
+      our_pressing_level: ourPressing.value,
+      opp_formation: oppF,
+      opp_possession_percentage: oppPoss,
+      opp_shot: +document.getElementById('opp_shot').value,
+      opp_shot_on_target: +document.getElementById('opp_shot_on_target').value,
+      opp_goal_count: +document.getElementById('opp_goal_count').value,
+      opp_pressing_level: oppPressing.value,
+      opp_attack_side: oppAttack.value,
+      opp_play_style: oppStyle.value,
+    };
+
+    try {
+      const r = await fetch('/api/predict', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await r.json();
+      if (data.error) { showToast(data.error, 'error'); return; }
+      showResult(payload, data);
+    } catch (e) {
+      showToast('Prediction failed', 'error');
+    } finally {
+      document.getElementById('submitText').style.display = 'inline';
+      document.getElementById('submitLoad').style.display = 'none';
+    }
+  }
+  function showResult(inp, res) {
+    const pressMap = { low: '🔵 Low Press', medium: '🟡 Medium Press', high: '🔴 High Press' };
+    const defMap = { Deep: '🔵 Deep Block', Mid: '🟡 Mid Block', High: '🔴 High Line' };
+    const styleMap = { possession_game: '🎯 Possession', quick_counter: '⚡ Quick Counter', long_ball: '🏹 Long Ball', long_ball_counter: '🏹 LB Counter', out_wide: '↔️ Out Wide', balanced: '⚖️ Balanced' };
+    const sideMap = { left: '⬅️ Left', right: '➡️ Right', center: '⬆️ Center' };
+
+    const winBoost = res.win_probability_increase;
+    const winColor = winBoost >= 10 ? '#10b981' : winBoost >= 5 ? '#f59e0b' : '#94a3b8';
+
+    const analysis = generateAnalysis11(inp, res);
+
+    document.getElementById('resultBody').innerHTML = `
+    <div class="result-header">
+      <p class="text-muted mb-1" style="font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;">Win Probability Boost</p>
+      <div class="win-prob" style="color:${winColor}">+${winBoost}%</div>
+  <div class="formation-display mt-3">
+  <div class="formation-box"><div class="label">Current</div><div class="val">${inp.our_formation}</div></div>
+  ${inp.our_formation === res.recom_formation ?
+        `<div style="text-align:center;padding:0.5rem 1rem;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:0.75rem;color:#10b981;font-weight:700;font-size:0.85rem;">✅ Continue with<br>Current Formation</div>`
+        :
+        `<div class="formation-arrow">→</div>
+    <div class="formation-box recommended"><div class="label">Recommended</div><div class="val">${res.recom_formation}</div></div>`
+      }
+</div>
+    </div>
+    
+    <div class="section-card">
+      <h5><i class="fas fa-chess text-cyan"></i> Tactical Recommendations</h5>
+      <div class="tactic-grid">
+        <div class="tactic-item"><div class="t-icon">⚽</div><div class="t-label">Formation</div><div class="t-val" style="color:var(--cyan)">${res.recom_formation}</div></div>
+        <div class="tactic-item"><div class="t-icon">🎮</div><div class="t-label">Play Style</div><div class="t-val">${styleMap[res.recom_playstyle] || res.recom_playstyle}</div></div>
+        <div class="tactic-item"><div class="t-icon">💪</div><div class="t-label">Pressing</div><div class="t-val">${pressMap[res.recom_pressing_level] || res.recom_pressing_level}</div></div>
+        <div class="tactic-item"><div class="t-icon">🛡️</div><div class="t-label">Def. Line</div><div class="t-val">${defMap[res.recom_defensive_line] || res.recom_defensive_line}</div></div>
+        <div class="tactic-item"><div class="t-icon">🎯</div><div class="t-label">Focus Side</div><div class="t-val">${sideMap[res.recom_focus_side] || res.recom_focus_side}</div></div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h5><i class="fas fa-chart-bar text-cyan"></i> Tactical Analysis</h5>
+      <div style="color:#94a3b8;line-height:1.7;font-size:0.9rem">${analysis}</div>
+    </div>
+    
+    <div class="section-card">
+      <h5><i class="fas fa-futbol text-cyan"></i> Formation Diagram</h5>
+      <div class="row g-3">
+        <div class="col-6">
+          <p class="text-center text-muted small mb-2">Current: ${inp.our_formation}</p>
+          <canvas id="pitch_current" class="pitch-canvas w-100" height="200"></canvas>
+        </div>
+        <div class="col-6">
+          <p class="text-center small mb-2" style="color:var(--cyan)">Recommended: ${res.recom_formation}</p>
+          <canvas id="pitch_recom" class="pitch-canvas w-100" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+  `;
+
+    const modal = new bootstrap.Modal(document.getElementById('resultModal'));
+    modal.show();
+    setTimeout(() => {
+      drawFormation('pitch_current', inp.our_formation);
+      drawFormation('pitch_recom', res.recom_formation, true);
+    }, 300);
+  }
+
+  function generateAnalysis11(inp, res) {
+    const lines = [];
+    const posDiff = inp.our_possession_percentage - inp.opp_possession_percentage;
+    if (posDiff > 15) lines.push('✅ You are dominating possession. Maintaining a <strong>possession-based approach</strong> will help control the tempo.');
+    else if (posDiff < -15) lines.push('⚠️ Opponent is controlling the ball. Recommend switching to <strong>compact defense</strong> and quick counter-attacks.');
+    else lines.push('⚖️ Possession is relatively balanced. Focus on <strong>tactical discipline</strong> in transitions.');
+
+    if (res.recom_formation !== inp.our_formation) lines.push(`🔄 Formation change from <strong>${inp.our_formation}</strong> to <strong>${res.recom_formation}</strong> recommended to better neutralize opponent's <strong>${inp.opp_play_style.replace(/_/g, ' ')}</strong> style.`);
+
+    const pressMap2 = { low: 'conserving energy with low-block defense', medium: 'balanced pressing to win the ball back', high: 'an aggressive high press to force mistakes' };
+    lines.push(`💪 Set pressing to <strong>${res.recom_pressing_level}</strong> — focus on ${pressMap2[res.recom_pressing_level]}.`);
+    lines.push(`🛡️ Maintain a <strong>${res.recom_defensive_line}</strong> defensive line to manage space behind the last defender.`);
+    lines.push(`🎯 Exploit attacks down the <strong>${res.recom_focus_side}</strong> flank to create numerical advantage.`);
+
+    if (inp.opp_attack_side !== 'center') lines.push(`⚠️ Opponent favors <strong>${inp.opp_attack_side}</strong> flank attacks — reinforce that side defensively.`);
+
+    return lines.map(l => `<p class="mb-2">• ${l}</p>`).join('');
+  }
+
+  function drawFormation(canvasId, formation, highlight = false) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.offsetWidth; canvas.width = W; canvas.height = 200;
+    const H = 200;
+
+    // Pitch
+    ctx.fillStyle = '#1a3a1a'; ctx.fillRect(0, 0, W, H);
+    ctx.strokeStyle = 'rgba(255,255,255,0.25)'; ctx.lineWidth = 1.5;
+    ctx.strokeRect(8, 8, W - 16, H - 16);
+    ctx.beginPath(); ctx.moveTo(8, H / 2); ctx.lineTo(W - 8, H / 2); ctx.stroke();
+    ctx.beginPath(); ctx.arc(W / 2, H / 2, 25, 0, Math.PI * 2); ctx.stroke();
+
+    const parts = formation.split('-').map(Number);
+    const totalPlayers = parts.reduce((a, b) => a + b, 0) + 1;
+    const rows = [1, ...parts];
+    const rowPositions = rows.map((_, i) => 15 + (i / (rows.length - 1 || 1)) * (H - 30));
+
+    const color = highlight ? '#00d4ff' : '#f59e0b';
+
+    rows.forEach((count, ri) => {
+      for (let pi = 0; pi < count; pi++) {
+        const x = (pi + 1) * W / (count + 1);
+        const y = rowPositions[ri];
+        ctx.beginPath(); ctx.arc(x, y, 8, 0, Math.PI * 2);
+        ctx.fillStyle = color + '33'; ctx.fill();
+        ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.stroke();
+        ctx.fillStyle = 'white'; ctx.font = 'bold 7px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(ri === 0 ? 'GK' : '●', x, y);
+      }
+    });
+  }
+</script>
+{% endblock %}
